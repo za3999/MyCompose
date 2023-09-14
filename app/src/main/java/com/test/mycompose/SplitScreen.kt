@@ -17,9 +17,11 @@ fun splitInit(context: Context) {
 
 private fun getSplitPairRule(context: Context, attributes: SplitAttributes): SplitPairRule {
     val mainSplitFilter = SplitPairFilter(ComponentName(context, MainActivity::class.java), ComponentName(context, SecondActivity::class.java), null)
-    return SplitPairRule.Builder(setOf(mainSplitFilter)).setDefaultSplitAttributes(attributes).setMinWidthDp(840).setMinSmallestWidthDp(600)
-        .setMaxAspectRatioInPortrait(EmbeddingAspectRatio.ratio(1.5f)).setFinishPrimaryWithSecondary(SplitRule.FinishBehavior.NEVER)
-        .setFinishSecondaryWithPrimary(SplitRule.FinishBehavior.ALWAYS).setClearTop(true).build()
+    val main2SplitFilter = SplitPairFilter(ComponentName(context, MainActivity::class.java), ComponentName(context, ThirdActivity::class.java), null)
+    return SplitPairRule.Builder(setOf(mainSplitFilter, main2SplitFilter)).setDefaultSplitAttributes(attributes).setMinWidthDp(840)
+        .setMinSmallestWidthDp(600).setMaxAspectRatioInPortrait(EmbeddingAspectRatio.ratio(1.5f))
+        .setFinishPrimaryWithSecondary(SplitRule.FinishBehavior.NEVER).setFinishSecondaryWithPrimary(SplitRule.FinishBehavior.ALWAYS)
+        .setClearTop(true).build()
 }
 
 private fun getSplitPlaceholderRule(context: Context, attributes: SplitAttributes): SplitPlaceholderRule {

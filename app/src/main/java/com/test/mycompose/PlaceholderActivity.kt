@@ -15,7 +15,7 @@ class PlaceholderActivity : ComponentActivity() {
         setContent {
             MyComposeTheme { // A surface container using the 'background' color from the theme
                 Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colors.secondary) {
-                    TestView("PlaceholderActivity", true)
+                    TestView("PlaceholderActivity", ActivityFlog.SECOND)
                 }
             }
         }

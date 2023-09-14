@@ -1,5 +1,6 @@
 package com.test.mycompose
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import androidx.compose.foundation.layout.Arrangement
@@ -13,11 +14,29 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.content.ContextCompat
 import com.test.mycompose.ui.theme.MyComposeTheme
 
+enum class ActivityFlog {
+    SECOND,
+    THIRD,
+    EXPANDED,
+    FINISH
+}
+
+
 @Composable
-fun TestView(name: String, toSecondActivity: Boolean = true, context: Context = LocalContext.current) {
+fun TestView(name: String, toActivity: ActivityFlog = ActivityFlog.SECOND, context: Context = LocalContext.current) {
     Column(verticalArrangement = Arrangement.Center, horizontalAlignment = Alignment.CenterHorizontally) {
         Button(onClick = {
-            ContextCompat.startActivity(context, Intent(context, if (toSecondActivity) SecondActivity::class.java else ExpandedActivity::class.java), null)
+            if (toActivity == ActivityFlog.FINISH) {
+                (context as Activity).finish()
+                return@Button
+            }
+            var toActivity = when (toActivity) {
+                ActivityFlog.SECOND -> SecondActivity::class.java
+                ActivityFlog.THIRD -> ThirdActivity::class.java
+                ActivityFlog.EXPANDED -> ExpandedActivity::class.java
+                else -> PlaceholderActivity::class.java
+            }
+            ContextCompat.startActivity(context, Intent(context, toActivity), null)
         }) {
             Text(text = "Hello $name!")
         }

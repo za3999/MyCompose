@@ -15,7 +15,7 @@ class SecondActivity : ComponentActivity() {
         setContent {
             MyComposeTheme { // A surface container using the 'background' color from the theme
                 Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colors.primary) {
-                    TestView("Second Activity", false)
+                    TestView("Second Activity", ActivityFlog.THIRD)
                 }
             }
         }
