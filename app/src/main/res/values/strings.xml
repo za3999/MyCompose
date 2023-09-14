@@ -2,4 +2,5 @@
     <string name="app_name">MyCompose</string>
     <string name="title_activity_second">SecondActivity</string>
     <string name="title_activity_placeholder">PlaceholderActivity</string>
+    <string name="title_activity_expanded">ExpandedActivity</string>
 </resources>

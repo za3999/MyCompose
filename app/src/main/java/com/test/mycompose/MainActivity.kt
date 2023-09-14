@@ -1,28 +1,27 @@
 package com.test.mycompose
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.Spring
-import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.spring
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
-import com.test.mycompose.ui.theme.MyComposeTheme
-import androidx.compose.foundation.lazy.items
-import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.coerceAtLeast
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat.startActivity
+import com.test.mycompose.ui.theme.MyComposeTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -65,7 +64,7 @@ fun Greetings(onBackClick: () -> Unit = {}, modifier: Modifier = Modifier, names
 
 
 @Composable
-fun Greeting(name: String) {
+fun Greeting(name: String, context: Context = LocalContext.current) {
     var expanded by remember { mutableStateOf(false) }
     Surface(color = MaterialTheme.colorScheme.primary, modifier = Modifier.padding(vertical = 4.dp, horizontal = 8.dp)) {
         Row(modifier = Modifier
@@ -80,9 +79,11 @@ fun Greeting(name: String) {
                     Text(text = ("Composem ipsum color sit lazy, " + "padding theme elit, sed do bouncy. ").repeat(4))
                 }
             }
-            ElevatedButton(onClick = { expanded = !expanded }) {
+            ElevatedButton(onClick = {
+                expanded = !expanded
+                startActivity(context, Intent(context, SecondActivity::class.java), null)
+            }) {
                 Text(if (expanded) "Show less" else "Show more")
-                startActivity(LocalContext.current, Intent(LocalContext.current, SecondActivity::class.java), null)
             }
         }
     }
@@ -91,7 +92,7 @@ fun Greeting(name: String) {
 @Composable
 fun OnBoardingScreen(onContinueClick: () -> Unit = {}, modifier: Modifier = Modifier) { // TODO: This state should be hoisted
     Column(modifier = modifier.fillMaxSize(), verticalArrangement = Arrangement.Center, horizontalAlignment = Alignment.CenterHorizontally) {
-        Text("Welcome to the Basics Codelab!")
+        Text("Welcome to the My test!")
         Button(modifier = Modifier.padding(vertical = 24.dp), onClick = onContinueClick) {
             Text("Continue")
         }

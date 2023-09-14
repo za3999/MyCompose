@@ -9,13 +9,13 @@ import androidx.compose.material.Surface
 import androidx.compose.ui.Modifier
 import com.test.mycompose.ui.theme.MyComposeTheme
 
-class PlaceholderActivity : ComponentActivity() {
+class ExpandedActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             MyComposeTheme { // A surface container using the 'background' color from the theme
-                Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colors.secondary) {
-                    TestView("PlaceholderActivity", true)
+                Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colors.secondaryVariant) {
+                    TestView("ExpandedActivity", true)
                 }
             }
         }

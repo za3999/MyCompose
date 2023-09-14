@@ -6,10 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
-import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import com.test.mycompose.ui.theme.MyComposeTheme
 
 class SecondActivity : ComponentActivity() {
@@ -17,23 +14,10 @@ class SecondActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             MyComposeTheme { // A surface container using the 'background' color from the theme
-                Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colors.background) {
-                    Greeting2("Second Activity")
+                Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colors.primary) {
+                    TestView("Second Activity", false)
                 }
             }
         }
-    }
-}
-
-@Composable
-fun Greeting2(name: String) {
-    Text(text = "Hello $name!")
-}
-
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview2() {
-    MyComposeTheme {
-        Greeting2("Android")
     }
 }

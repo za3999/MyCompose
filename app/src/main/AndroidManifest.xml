@@ -12,22 +12,32 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyCompose"
         tools:targetApi="31">
+        <activity
+            android:name=".ExpandedActivity"
+            android:configChanges="keyboardHidden|orientation|fontScale|screenSize"
+            android:exported="false"
+            android:label="@string/title_activity_expanded"
+            android:theme="@style/Theme.MyCompose" />
+
         <property
             android:name="android.window.PROPERTY_ACTIVITY_EMBEDDING_SPLITS_ENABLED"
             android:value="true" />
 
         <activity
             android:name=".PlaceholderActivity"
+            android:configChanges="keyboardHidden|orientation|fontScale|screenSize"
             android:exported="false"
             android:label="@string/title_activity_placeholder"
             android:theme="@style/Theme.MyCompose" />
         <activity
             android:name=".SecondActivity"
+            android:configChanges="keyboardHidden|orientation|fontScale|screenSize"
             android:exported="false"
             android:label="@string/title_activity_second"
             android:theme="@style/Theme.MyCompose" />
         <activity
             android:name=".MainActivity"
+            android:configChanges="keyboardHidden|orientation|fontScale|screenSize"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.MyCompose">
