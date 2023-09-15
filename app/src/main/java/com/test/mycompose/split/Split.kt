@@ -12,10 +12,10 @@ import androidx.window.embedding.*
 private val second2PrimaryMap = mutableMapOf<Class<out Activity>, Class<out Activity>>()
 private val existActivityMaps = mutableMapOf<Class<out Activity>, ArrayList<Activity>>()
 
-fun Context.startActivity(clazz: Class<out Activity>, clearOthers: Boolean = false, options: Bundle? = null) {
+fun Context.startActivity(clazz: Class<out Activity>, clearPrimaryTask: Boolean = false, options: Bundle? = null) {
     startActivity(Intent(this, clazz), options)
     second2PrimaryMap[clazz]?.let { it ->
-        if (clearOthers) {
+        if (clearPrimaryTask) {
             existActivityMaps[it]?.let { it ->
                 it.forEach {
                     if (it::class.java == clazz) return@forEach

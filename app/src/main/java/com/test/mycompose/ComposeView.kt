@@ -23,7 +23,7 @@ enum class ActivityFlog {
 
 
 @Composable
-fun TestView(name: String, toActivity: ActivityFlog = ActivityFlog.SECOND, clearOthers: Boolean = false, context: Context = LocalContext.current) {
+fun TestView(name: String, toActivity: ActivityFlog = ActivityFlog.SECOND, clearPrimaryTask: Boolean = false, context: Context = LocalContext.current) {
     Column(verticalArrangement = Arrangement.Center, horizontalAlignment = Alignment.CenterHorizontally) {
         Button(onClick = {
             if (toActivity == ActivityFlog.FINISH) {
@@ -37,7 +37,7 @@ fun TestView(name: String, toActivity: ActivityFlog = ActivityFlog.SECOND, clear
                 ActivityFlog.EXPANDED -> ExpandedActivity::class.java
                 else -> PlaceholderActivity::class.java
             }
-            context.startActivity(toActivity, clearOthers)
+            context.startActivity(toActivity, clearPrimaryTask)
         }) {
             Text(text = "Hello $name!")
         }
