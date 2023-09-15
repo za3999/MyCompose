@@ -1,7 +1,6 @@
 package com.test.mycompose
 
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -20,7 +19,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.core.content.ContextCompat.startActivity
+import com.test.mycompose.split.startActivity
 import com.test.mycompose.ui.theme.MyComposeTheme
 
 class MainActivity : ComponentActivity() {
@@ -81,7 +80,11 @@ fun Greeting(name: String, context: Context = LocalContext.current) {
             }
             ElevatedButton(onClick = {
                 expanded = !expanded
-                startActivity(context, Intent(context, SecondActivity::class.java), null)
+                if (expanded) {
+                    context.startActivity(SecondActivity::class.java)
+                } else {
+                    context.startActivity(FourActivity::class.java, true)
+                }
             }) {
                 Text(if (expanded) "Show less" else "Show more")
             }

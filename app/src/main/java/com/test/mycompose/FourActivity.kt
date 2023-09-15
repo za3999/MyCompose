@@ -12,13 +12,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.test.mycompose.ui.theme.MyComposeTheme
 
-class ThirdActivity : ComponentActivity() {
+class FourActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             MyComposeTheme { // A surface container using the 'background' color from the theme
                 Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colors.background) {
-                    TestView("ThirdActivity Activity", ActivityFlog.FOUR)
+                    TestView("FourActivity Activity", ActivityFlog.EXPANDED)
                 }
             }
         }
