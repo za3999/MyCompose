@@ -28,9 +28,9 @@ fun Context.startActivity(clazz: Class<out Activity>, clearOthers: Boolean = fal
 
 fun initSplitRules(application: Application) {
     var controller = RuleController.getInstance(application)
-    val attributes = SplitAttributes.Builder().setSplitType(SplitAttributes.SplitType.ratio(0.33f))
-        .setLayoutDirection(SplitAttributes.LayoutDirection.LEFT_TO_RIGHT).build()
     SplitConfig.SPLIT_LIST.forEach {
+        val attributes = SplitAttributes.Builder().setSplitType(SplitAttributes.SplitType.ratio(it.ratio))
+            .setLayoutDirection(SplitAttributes.LayoutDirection.LEFT_TO_RIGHT).build()
         var secondSet = hashSetOf<SplitPairFilter>().apply {
             it.secondClassList.forEach { second ->
                 add(SplitPairFilter(ComponentName(application, it.primaryClass), ComponentName(application, second), null))
